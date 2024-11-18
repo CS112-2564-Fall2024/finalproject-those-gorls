@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="edu.miracosta.cs112.finalproject.finalproject.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="531.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="mainScreenImageView" fitHeight="318.0" fitWidth="495.0" layoutX="18.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="yesButton" layoutX="18.0" layoutY="491.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="228.0" text="yesButton" />
+      <Button fx:id="noButton" layoutX="283.0" layoutY="491.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="228.0" text="noButton" />
+      <Button fx:id="speakerBuzzButton" layoutX="436.0" layoutY="276.0" mnemonicParsing="false" opacity="0.04" prefHeight="58.0" prefWidth="75.0" text="speakerButton" />
+      <ImageView fx:id="speakerImageView" fitHeight="58.0" fitWidth="75.0" layoutX="436.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="eventsTextField" alignment="CENTER" layoutX="18.0" layoutY="337.0" prefHeight="131.0" prefWidth="495.0" text="Conflicts/ actions/ results label" />
+      <Label fx:id="beeStatsLeft" alignment="TOP_LEFT" layoutX="18.0" layoutY="564.0" prefHeight="110.0" prefWidth="235.0" text="bee(name, size, gender)" />
+      <Label fx:id="beeStatsRight" alignment="TOP_LEFT" layoutX="283.0" layoutY="564.0" prefHeight="110.0" prefWidth="235.0" text="bee(role, days lived), season" />
+   </children>
+</Pane>
