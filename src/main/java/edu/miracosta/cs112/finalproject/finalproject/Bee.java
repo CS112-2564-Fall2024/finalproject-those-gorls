@@ -1,5 +1,5 @@
 package edu.miracosta.cs112.finalproject.finalproject;
-public class Bee {
+public abstract class Bee {
     public String name;
     public int sizeInCm;
     public String gender;
@@ -37,6 +37,7 @@ public class Bee {
     public abstract String toString(String name, int sizeInCm, String gender);
 
     //other methods
-    public abstract lifeSpan;
+    public abstract int lifeSpan();
+
 
 }
