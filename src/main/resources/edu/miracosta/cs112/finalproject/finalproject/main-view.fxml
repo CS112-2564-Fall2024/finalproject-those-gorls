@@ -9,9 +9,9 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="531.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="mainScreenImageView" fitHeight="318.0" fitWidth="495.0" layoutX="18.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="yesButton" layoutX="18.0" layoutY="491.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="228.0" text="yesButton" />
-      <Button fx:id="noButton" layoutX="283.0" layoutY="491.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="228.0" text="noButton" />
-      <Button fx:id="speakerBuzzButton" layoutX="436.0" layoutY="276.0" mnemonicParsing="false" opacity="0.04" prefHeight="58.0" prefWidth="75.0" text="speakerButton" />
+      <Button fx:id="yesButton" layoutX="18.0" layoutY="491.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="228.0" text="yesButton" onAction="yesButtonAction"/>
+      <Button fx:id="noButton" layoutX="283.0" layoutY="491.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="228.0" text="noButton" onAction="noButtonAction"/>
+      <Button fx:id="speakerBuzzButton" layoutX="436.0" layoutY="276.0" mnemonicParsing="false" opacity="0.04" prefHeight="58.0" prefWidth="75.0" text="speakerButton" onAction="speakerButtonAction"/>
       <ImageView fx:id="speakerImageView" fitHeight="58.0" fitWidth="75.0" layoutX="436.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="eventsTextField" alignment="CENTER" layoutX="18.0" layoutY="337.0" prefHeight="131.0" prefWidth="495.0" text="Conflicts/ actions/ results label" />
       <Label fx:id="beeStatsLeft" alignment="TOP_LEFT" layoutX="18.0" layoutY="564.0" prefHeight="110.0" prefWidth="235.0" text="bee(name, size, gender)" />
