@@ -34,7 +34,7 @@ public abstract class Bee {
     }
 
     //toString
-    public abstract String toString(String name, int sizeInCm, String gender);
+    public abstract String toString();
 
     //other methods
     public abstract int lifeSpan();

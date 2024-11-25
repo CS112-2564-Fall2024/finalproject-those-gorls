@@ -2,7 +2,7 @@ package edu.miracosta.cs112.finalproject.finalproject;
 
 public class DroneBeeActions extends Bee{
     @Override
-    public String toString(String name, int sizeInCm, String gender){
+    public String toString(){
         return "";
     }
 
