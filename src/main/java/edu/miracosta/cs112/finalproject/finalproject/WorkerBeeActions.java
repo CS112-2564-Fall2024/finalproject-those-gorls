@@ -4,13 +4,21 @@ import javafx.scene.control.TextField;
 
 public class WorkerBeeActions extends Bee{
 
-    protected final String name = "Worker";
-    protected final int sizeInCm = 1;
-    protected final String gender = "Female";
+    protected final String NAME = "Worker";
+    protected final int SIZEINCM = 1;
+    protected final String GENDER = "Female";
+
+
+    public WorkerBeeActions(){
+        super.setName(NAME);
+        super.setSizeInCm(SIZEINCM);
+        super.setGender(GENDER);
+
+    }
 
     @Override
     public String toString(){
-        return name + "\n" + sizeInCm + "\n" + gender;
+        return "Worker\nSize: 1cm\nGender: Female";
     }
 
     @Override

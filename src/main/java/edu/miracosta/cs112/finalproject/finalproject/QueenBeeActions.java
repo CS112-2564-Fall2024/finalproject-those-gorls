@@ -12,8 +12,6 @@ public class QueenBeeActions extends Bee{
         return 0;
     }
 
-    public class work{
 
-    }
 
 }

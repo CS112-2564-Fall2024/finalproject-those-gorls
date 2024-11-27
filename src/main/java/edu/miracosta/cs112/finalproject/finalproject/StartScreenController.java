@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,6 +22,8 @@ public class StartScreenController{
     private Button workerBeeButton;
     @FXML
     private Button queenBeeButton;
+    @FXML
+    private ImageView startScreenImage;
 
      @FXML
      protected void initialize(){
@@ -29,6 +32,7 @@ public class StartScreenController{
          droneBeeButton.setText("Drone Bee");
          workerBeeButton.setText("Worker Bee");
          queenBeeButton.setText("Queen Bee");
+         //startScreenImage.setImage("C:\\Users\\MCCLab4804WD01\\IdeaProjects\\finalproject-those-gorls\\src\\main\\resources\\edu\\miracosta\\cs112\\finalproject\\finalproject\\img.png");
 
      }
 
