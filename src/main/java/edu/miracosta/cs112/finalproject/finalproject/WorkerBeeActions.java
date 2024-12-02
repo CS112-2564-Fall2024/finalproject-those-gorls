@@ -18,7 +18,7 @@ public class WorkerBeeActions extends Bee{
 
     @Override
     public String toString(){
-        return "Worker\nSize: 1cm\nGender: Female";
+        return "Worker\n Size: 1cm\n Gender: Female";
     }
 
     @Override
