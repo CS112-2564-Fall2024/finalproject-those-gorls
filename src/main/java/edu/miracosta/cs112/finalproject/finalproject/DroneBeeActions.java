@@ -7,7 +7,7 @@ public class DroneBeeActions extends Bee{
 
     @Override
     public String toString() {
-        return "Bee Role: Drone\nSize: " + getSizeInCm() + " cm\nGender: " + getGender();
+        return "Bee  Role: Drone\nSize: " + getSizeInCm() + " cm\nGender: " + getGender();
     }
 
     @Override

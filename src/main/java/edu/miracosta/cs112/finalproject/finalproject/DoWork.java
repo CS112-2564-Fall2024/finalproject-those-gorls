@@ -2,6 +2,7 @@ package edu.miracosta.cs112.finalproject.finalproject;
 
 import java.util.Random;
 
+
     public class DoWork {
 
         private static final Random RANDOM = new Random();
