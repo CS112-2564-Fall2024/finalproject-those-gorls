@@ -3,26 +3,17 @@ package edu.miracosta.cs112.finalproject.finalproject;
 import javafx.scene.control.TextField;
 
 public class WorkerBeeActions extends Bee{
-
-    protected final String NAME = "Worker";
-    protected final int SIZEINCM = 1;
-    protected final String GENDER = "Female";
-
-
     public WorkerBeeActions(){
-        super.setName(NAME);
-        super.setSizeInCm(SIZEINCM);
-        super.setGender(GENDER);
-
+        super(Constants.WORKER_NAME, Constants.WORKER_SIZE, Constants.WORKER_GENDER);
     }
 
     @Override
-    public String toString(){
-        return "Worker\n Size: 1cm\n Gender: Female";
+    public String toString() {
+        return "Bee Role: Worker\nSize: " + getSizeInCm() + " cm\nGender: " + getGender();
     }
 
     @Override
-    public int lifeSpan(){
-        return 0;
+    public int lifeSpan() {
+        return Constants.WORKER_LIFESPAN;
     }
 }

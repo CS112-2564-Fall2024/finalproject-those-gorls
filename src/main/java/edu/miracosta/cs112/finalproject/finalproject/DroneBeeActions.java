@@ -2,8 +2,7 @@ package edu.miracosta.cs112.finalproject.finalproject;
 
 public class DroneBeeActions extends Bee{
     public DroneBeeActions() {
-        super("Drone Bee", 2, "Male");
-    }
+        super(Constants.DRONE_NAME, Constants.DRONE_SIZE, Constants.DRONE_GENDER);    }
 
     @Override
     public String toString() {
@@ -12,7 +11,7 @@ public class DroneBeeActions extends Bee{
 
     @Override
     public int lifeSpan() {
-        return 30; //days
+        return Constants.DRONE_LIFESPAN;
     }
 }
 

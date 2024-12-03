@@ -1,15 +1,18 @@
 package edu.miracosta.cs112.finalproject.finalproject;
 
 public class QueenBeeActions extends Bee{
+    public QueenBeeActions() {
+        super(Constants.QUEEN_NAME, Constants.QUEEN_SIZE, Constants.QUEEN_GENDER);
+    }
 
     @Override
     public String toString(){
-        return "";
+        return "Bee Role: Queen\nSize: " + getSizeInCm() + " cm\nGender: " + getGender();
     }
 
     @Override
     public int lifeSpan(){
-        return 0;
+        return Constants.QUEEN_LIFESPAN;
     }
 
 

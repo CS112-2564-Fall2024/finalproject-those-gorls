@@ -9,7 +9,8 @@ import java.util.Random;
 
         private static final String[] WORKER_TASKS = {
                 "gathering nectar",
-                "collecting pollen"
+                "collecting pollen",
+                ""
         };
 
         private static final String[] DRONE_TASKS = {
@@ -19,20 +20,6 @@ import java.util.Random;
         private static final String[] QUEEN_TASKS = {
                 "lay eggs"
         };
-
-//        public static String performTask(Bee bee) {
-//            if (bee == null) {
-//                return "This bee doesn't seem to have a task.";
-//            }
-//
-//            return switch (bee) {
-//                case WorkerBeeActions workerBee -> WORKER_TASKS[RANDOM.nextInt(WORKER_TASKS.length)];
-//                case DroneBeeActions droneBee -> DRONE_TASKS[RANDOM.nextInt(DRONE_TASKS.length)];
-//                case QueenBeeActions queenBee -> QUEEN_TASKS[RANDOM.nextInt(QUEEN_TASKS.length)];
-//                default -> "Unknown bee type.";
-//            };
-//        }
-//    }
 
         public static String performTask(Bee bee) {
             return switch (bee) {
