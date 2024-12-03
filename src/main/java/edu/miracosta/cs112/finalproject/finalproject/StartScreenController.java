@@ -35,11 +35,14 @@ public class StartScreenController{
          droneBeeButton.setText("Drone Bee");
          workerBeeButton.setText("Worker Bee");
          queenBeeButton.setText("Queen Bee");
+
          URL imageViewURL = Application.class.getResource("/edu/miracosta/cs112/finalproject/finalproject/img.png");
-         //URL imageViewURL = Application.class.getResource("/edu/miracosta/cs112/finalproject/finalproject/img_2.png");
+         System.out.println("Image URL: " + imageViewURL);
          assert imageViewURL != null;
          startScreenImage.setImage(new Image(imageViewURL.toString()));
+
      }
+
 
     @FXML
     protected void droneBeeChoice() throws IOException {
