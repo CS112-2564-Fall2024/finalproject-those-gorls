@@ -6,12 +6,16 @@ public class DroneBeeActions extends Bee{
 
     @Override
     public String toString() {
-        return "Bee  Role: Drone\nSize: " + getSizeInCm() + " cm\nGender: " + getGender();
+        return "Bee  Role: Drone Size: " + getSizeInCm() + " cm Gender: " + getGender();
     }
 
     @Override
     public int lifeSpan() {
         return Constants.DRONE_LIFESPAN;
+    }
+    @Override
+    public String stats(){
+        return "Life span: " + lifeSpan() + "\n Season: Spring";
     }
 }
 

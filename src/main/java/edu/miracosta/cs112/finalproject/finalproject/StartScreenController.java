@@ -60,7 +60,7 @@ public class StartScreenController{
 
     @FXML
     protected void handleMainScreen(Bee newBee) throws IOException {
-         Stage stage = new Stage();
+        Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);

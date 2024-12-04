@@ -40,6 +40,7 @@ public abstract class Bee {
 
     //other methods
     public abstract int lifeSpan();
+    public abstract String stats();
 
 
 }
