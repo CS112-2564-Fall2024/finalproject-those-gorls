@@ -16,13 +16,16 @@ public class MainViewController {
     public TextField beeInfoLeft;
     @FXML
     public TextField beeInfoRight;
-//      <ImageView fx:id="mainScreenImage" fitHeight="329.0" fitWidth="519.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+    @FXML
+    Image mainScreenImage;
     @FXML
     ImageView speakerImageView;
     @FXML
     Button speakerButton;
-//      <TextField fx:id="eventTextField" alignment="CENTER" layoutX="14.0" layoutY="352.0" prefHeight="143.0" prefWidth="512.0" text="mainTextField" />
-
+    @FXML
+    Button yesButton;
+    @FXML
+    Button noButton;
 
     @FXML
     public void setBee(Bee newBee){
@@ -50,11 +53,13 @@ public class MainViewController {
 
     @FXML
     protected void initialize(){
+        yesButton.setText("YES");
+        noButton.setText("NO");
         eventTextField.setText("Congratulations on being born!!\n Click yes to start working");
-        URL imageViewURL = Application.class.getResource("/edu/miracosta/cs112/finalproject/finalproject/img_1.png");
-        System.out.println("Image URL: " + imageViewURL);
-        assert imageViewURL != null;
-        speakerImageView.setImage(new Image(imageViewURL.toString()));
+        URL speakerURL = Application.class.getResource("/edu/miracosta/cs112/finalproject/finalproject/img_1.png");
+        System.out.println("Image URL: " + speakerURL);
+        assert speakerURL != null;
+        speakerImageView.setImage(new Image(speakerURL.toString()));
 
 
     }
