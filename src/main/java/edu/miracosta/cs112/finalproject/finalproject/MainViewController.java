@@ -9,6 +9,9 @@ public class MainViewController {
     private TextField eventTextField;
     @FXML
     public TextField beeInfoLeft;
+
+    private Bee currentBee;
+
     //Bee newBee;
 //      <ImageView fx:id="mainScreenImage" fitHeight="329.0" fitWidth="519.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
 //      <ImageView fx:id="speakerImageView" fitHeight="68.0" fitWidth="71.0" layoutX="462.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true" />
@@ -21,24 +24,45 @@ public class MainViewController {
 
     @FXML
     public void setBee(Bee newBee){
+        this.currentBee = newBee;
         beeInfoLeft.setText(newBee.toString());
+        displayInitialEvent();
+    }
 
+    private void displayInitialEvent() {
+        if (currentBee != null) {
+            eventTextField.setText("Congratulations on being born!!\nClick Yes to start working!");
+        }
     }
 
 
     @FXML
     protected void yesButtonAction() {
-        eventTextField.setText("Welcome to JavaFX Application!");
-
+        if (currentBee != null) {
+            String event = switch (currentBee) {
+                case WorkerBeeActions workerBeeActions -> ActionsAndEvents.getRandomWorkerBeeEvent();
+                case DroneBeeActions droneBeeActions -> ActionsAndEvents.getRandomDroneBeeEvent();
+                case QueenBeeActions queenBeeActions -> ActionsAndEvents.getRandomQueenBeeEvent();
+                default -> "Unknown bee type. No events available.";
+            };
+            eventTextField.setText(event);
+        } else {
+            eventTextField.setText("No bee has been selected!");
+        }
     }
 
     @FXML
-    protected void noButtonAction(){}
-
+    protected void noButtonAction() {
+        if (currentBee != null) {
+            eventTextField.setText("Okay, no action taken. Let me know if you'd like to do something else!");
+        } else {
+            eventTextField.setText("No bee has been selected!");
+        }
+    }
 
     @FXML
     protected void speakerButtonAction(){
-
+        eventTextField.setText("Speaker functionality not yet implemented.");
     }
 
     @FXML

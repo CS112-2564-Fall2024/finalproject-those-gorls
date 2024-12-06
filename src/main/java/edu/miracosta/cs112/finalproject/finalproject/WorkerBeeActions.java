@@ -1,10 +1,9 @@
 package edu.miracosta.cs112.finalproject.finalproject;
 
-import javafx.scene.control.TextField;
+public class WorkerBeeActions extends Bee {
 
-public class WorkerBeeActions extends Bee{
-    public WorkerBeeActions(){
-        super(Constants.WORKER_NAME, Constants.WORKER_SIZE, Constants.WORKER_GENDER);
+    public WorkerBeeActions() {
+        super(Constants.WORKER_NAME, Constants.WORKER_SIZE, Constants.WORKER_GENDER, "Worker", 0);
     }
 
     @Override
@@ -17,3 +16,4 @@ public class WorkerBeeActions extends Bee{
         return Constants.WORKER_LIFESPAN;
     }
 }
+
