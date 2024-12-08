@@ -8,12 +8,16 @@ public class WorkerBeeActions extends Bee {
 
     @Override
     public String toString() {
-        return "Bee Role: Worker\nSize: " + getSizeInCm() + " cm\nGender: " + getGender();
+        return "Bee Role: Worker\n Size: " + getSizeInCm() + " cm\n Gender: " + getGender();
     }
 
     @Override
-    public int getlifeSpan() {
+    public int getLifeSpan() {
         return Constants.WORKER_LIFESPAN;
+    }
+    @Override
+    public String stats(){
+        return "Life span: " + getLifeSpan() + "\n Season: Spring";
     }
 }
 

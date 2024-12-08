@@ -12,12 +12,12 @@ public class QueenBeeActions extends Bee {
     }
 
     @Override
-    public int getlifeSpan() {
+    public int getLifeSpan() {
         return Constants.QUEEN_LIFESPAN;
     }
     @Override
     public String stats(){
-        return "Life span: " + lifeSpan() + "\n Season: Spring";
+        return "Life span: " + getLifeSpan() + "\n Season: Spring";
     }
 
 

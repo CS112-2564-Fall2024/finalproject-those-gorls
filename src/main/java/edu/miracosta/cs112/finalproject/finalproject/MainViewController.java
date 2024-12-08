@@ -5,19 +5,25 @@ import javafx.scene.control.Button;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.net.URL;
-import java.net.URL;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MainViewController {
+    @FXML
+    private ImageView speakerImageView;
+    @FXML
+    private TextField resultTextField;
+    @FXML
+    private Button yesButton;
+    @FXML
+    private Button noButton;
+    @FXML
+    private TextField beeInfoRight;
     @FXML
     private TextField eventTextField;
     @FXML
@@ -31,8 +37,8 @@ public class MainViewController {
     @FXML
     public void setBee(Bee newBee){
         this.currentBee = newBee;
-        beeInfoLeft.setText(newBee != null ? newBee.toString() : "No bee selected.");
-        displayInitialEvent();
+        beeInfoLeft.setText(newBee.toString());
+        beeInfoRight.setText(newBee.stats());
     }
 
     private void displayInitialEvent() {
@@ -41,9 +47,8 @@ public class MainViewController {
         } else {
             eventTextField.setText("No bee selected.");
         }
-        beeInfoLeft.setText(newBee.toString());
-        beeInfoRight.setText(newBee.stats());
     }
+
 
 
     @FXML
@@ -93,7 +98,7 @@ public class MainViewController {
     }
 
     @FXML
-    protected void initialize(){
+    protected void initialize() {
         yesButton.setText("YES");
         noButton.setText("NO");
         eventTextField.setText("Congratulations on being born!!\n Click yes to start working");
@@ -101,6 +106,8 @@ public class MainViewController {
         System.out.println("Image URL: " + speakerURL);
         assert speakerURL != null;
         speakerImageView.setImage(new Image(speakerURL.toString()));
+    }
+
     private void navigateToEndView() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("end-view.fxml"));

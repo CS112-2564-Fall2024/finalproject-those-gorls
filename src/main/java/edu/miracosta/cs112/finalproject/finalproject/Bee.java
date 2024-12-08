@@ -33,6 +33,7 @@ public abstract class Bee {
         return gender;
     }
     public String getRole() { return role; }
+
     public int getTimeAlive() { return timeAlive; }
     //Setters
     public void setName(String name) {
@@ -54,9 +55,6 @@ public abstract class Bee {
     // abstract methods
     public abstract String toString();
     public abstract int getLifeSpan();
-
-    public abstract int getlifeSpan();
-
     public abstract String stats();
 
     // method for type identification
