@@ -2,6 +2,7 @@ package edu.miracosta.cs112.finalproject.finalproject;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -46,28 +47,35 @@ public class StartScreenController{
 
     @FXML
     protected void droneBeeChoice() throws IOException {
-         handleMainScreen(new DroneBeeActions());
+         handleMainScreen(new DroneBee());
 
     }
     @FXML
     protected void workerBeeChoice() throws IOException {
-        handleMainScreen(new WorkerBeeActions());
+        handleMainScreen(new WorkerBee());
     }
     @FXML
     protected void queenBeeChoice() throws IOException {
-        handleMainScreen(new QueenBeeActions());
+        handleMainScreen(new QueenBee());
     }
 
     @FXML
     protected void handleMainScreen(Bee newBee) throws IOException {
-        Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        Parent root = fxmlLoader.load();
+
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("To Bee Or Not To Bee");
+
         MainViewController mainController = fxmlLoader.getController();
         mainController.setBee(newBee);
+
         stage.show();
 
+        // Close the current window
+        ((Stage) droneBeeButton.getScene().getWindow()).close();
     }
 }
+

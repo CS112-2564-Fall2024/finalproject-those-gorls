@@ -5,6 +5,7 @@ public abstract class Bee {
     public String gender;
     public String role;
     public int timeAlive;
+    private String lastEventResult;
 
     //Constructors
     public Bee(){
@@ -32,9 +33,18 @@ public abstract class Bee {
     public String getGender() {
         return gender;
     }
-    public String getRole() { return role; }
+    public String getRole() {
+        return role;
+    }
 
-    public int getTimeAlive() { return timeAlive; }
+    public int getTimeAlive() {
+        return timeAlive;
+    }
+
+    public String getLastEventResult() {
+        return lastEventResult;
+    }
+
     //Setters
     public void setName(String name) {
         this.name = name;
@@ -45,17 +55,34 @@ public abstract class Bee {
     public void setGender(String gender) {
         this.gender = gender;
     }
-    public void setRole(String role) { this.role = role; }
-    public void setTimeAlive(int timeAlive) { this.timeAlive = timeAlive; }
+    public void setRole(String role) {
+        this.role = role;
+    }
+    public void setTimeAlive(int timeAlive) {
+        this.timeAlive = timeAlive;
+    }
+    public void setLastEventResult(String result) {
+        this.lastEventResult = result;
+    }
 
     public void incrementTimeAlive(){
         this.timeAlive++;
     }
 
+    public String toString() {
+        // Return a summary of the bee's life (you can customize this as needed)
+        return "Bee Type: " + role + ", Time Alive: " + timeAlive + " days";
+    }
+
+    public String stats() {
+        // Provide additional stats if necessary (this can be customized)
+        return "Last Event: " + (lastEventResult != null ? lastEventResult : "No events yet");
+    }
+
     // abstract methods
-    public abstract String toString();
+    //public abstract String toString();
     public abstract int getLifeSpan();
-    public abstract String stats();
+    //public abstract String stats();
 
     // method for type identification
     public String getType() {

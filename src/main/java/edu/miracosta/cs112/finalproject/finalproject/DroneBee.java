@@ -1,14 +1,14 @@
 package edu.miracosta.cs112.finalproject.finalproject;
 
-public class DroneBeeActions extends Bee {
+public class DroneBee extends Bee {
 
-    public DroneBeeActions() {
+    public DroneBee() {
         super(Constants.DRONE_NAME, Constants.DRONE_SIZE, Constants.DRONE_GENDER, "Drone", 0);
     }
 
     @Override
     public String toString() {
-        return "Bee  Role: Drone Size: " + getSizeInCm() + " cm Gender: " + getGender();
+        return "Bee  Role: "+ getRole() + "\nDrone Size: " + getSizeInCm() + " cm \nGender: " + getGender();
     }
 
     @Override
@@ -17,7 +17,7 @@ public class DroneBeeActions extends Bee {
     }
     @Override
     public String stats(){
-        return "Life span: " + getLifeSpan() + "\n Season: Spring";
+        return "Life span: " + getLifeSpan() + " days\n Season: Spring";
     }
 }
 
