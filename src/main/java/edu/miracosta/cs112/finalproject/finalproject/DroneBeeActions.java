@@ -12,7 +12,7 @@ public class DroneBeeActions extends Bee {
     }
 
     @Override
-    public int lifeSpan() {
+    public int getlifeSpan() {
         return Constants.DRONE_LIFESPAN;
     }
 }

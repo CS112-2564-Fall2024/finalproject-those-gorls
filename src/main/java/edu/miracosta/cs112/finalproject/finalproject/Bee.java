@@ -49,14 +49,16 @@ public abstract class Bee {
     public void setRole(String role) { this.role = role; }
     public void setTimeAlive(int timeAlive) { this.timeAlive = timeAlive; }
 
-    public void totalTimeAlive(){
+    public void incrementTimeAlive(){
         this.timeAlive++;
     }
-    //toString
+
+    // abstract methods
     public abstract String toString();
+    public abstract int getlifeSpan();
 
-    //other methods
-    public abstract int lifeSpan();
-
-
+    // method for type identification
+    public String getType() {
+        return this.getClass().getSimpleName();
+    }
 }

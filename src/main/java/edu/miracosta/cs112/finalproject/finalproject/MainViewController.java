@@ -1,37 +1,54 @@
 package edu.miracosta.cs112.finalproject.finalproject;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class MainViewController {
     @FXML
+    private ImageView mainScreenImage;
+    @FXML
+    private ImageView speakerImageView;
+    @FXML
+    private Button speakerButton;
+    @FXML
+    private TextField resultTextField;
+    @FXML
+    private Button yesButton;
+    @FXML
+    private Button noButton;
+    @FXML
+    private TextField beeInfoRight;
+    @FXML
     private TextField eventTextField;
     @FXML
-    public TextField beeInfoLeft;
+    private TextField beeInfoLeft;
 
     private Bee currentBee;
-
-    //Bee newBee;
-//      <ImageView fx:id="mainScreenImage" fitHeight="329.0" fitWidth="519.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-//      <ImageView fx:id="speakerImageView" fitHeight="68.0" fitWidth="71.0" layoutX="462.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true" />
-//      <Button fx:id="speakerButton" layoutX="462.0" layoutY="272.0" mnemonicParsing="false" onAction="#speakerButtonAction" opacity="0.01" prefHeight="68.0" prefWidth="71.0" text="Button" />
-//      <TextField fx:id="eventTextField" alignment="CENTER" layoutX="14.0" layoutY="352.0" prefHeight="143.0" prefWidth="512.0" text="mainTextField" />
-//      <Button fx:id="yesButton" layoutX="14.0" layoutY="510.0" mnemonicParsing="false" onAction="#yesButtonAction" prefHeight="68.0" prefWidth="230.0" text="yesButton" />
-//      <Button fx:id="noButton" layoutX="303.0" layoutY="510.0" mnemonicParsing="false" onAction="#noButtonAction" prefHeight="68.0" prefWidth="230.0" text="noButton" />
-//      <TextField fx:id="beeInfoLeft" alignment="TOP_LEFT" layoutX="14.0" layoutY="593.0" prefHeight="68.0" prefWidth="264.0" text="beeInfo" />
-//      <TextField fx:id="beeInfoRight" alignment="TOP_LEFT" layoutX="303.0" layoutY="593.0" prefHeight="68.0" prefWidth="230.0" text="beeStats" />
+    private final ActionsAndEvents actionsAndEvents = new ActionsAndEvents();
+    private String currentEvent;
+    private boolean eventHandled = false;
 
     @FXML
     public void setBee(Bee newBee){
         this.currentBee = newBee;
-        beeInfoLeft.setText(newBee.toString());
+        beeInfoLeft.setText(newBee != null ? newBee.toString() : "No bee selected.");
         displayInitialEvent();
     }
 
     private void displayInitialEvent() {
         if (currentBee != null) {
-            eventTextField.setText("Congratulations on being born!!\nClick Yes to start working!");
+            eventTextField.setText("Welcome to the hive! \nClick Yes to start working!");
+        } else {
+            eventTextField.setText("No bee selected.");
         }
     }
 
@@ -39,24 +56,39 @@ public class MainViewController {
     @FXML
     protected void yesButtonAction() {
         if (currentBee != null) {
-            String event = switch (currentBee) {
-                case WorkerBeeActions workerBeeActions -> ActionsAndEvents.getRandomWorkerBeeEvent();
-                case DroneBeeActions droneBeeActions -> ActionsAndEvents.getRandomDroneBeeEvent();
-                case QueenBeeActions queenBeeActions -> ActionsAndEvents.getRandomQueenBeeEvent();
-                default -> "Unknown bee type. No events available.";
-            };
-            eventTextField.setText(event);
+            if (eventHandled) {
+                noButton.setDisable(true);
+                eventHandled = false;
+                currentEvent = actionsAndEvents.generateEvent(currentBee.getType());
+                if (currentEvent != null && !currentEvent.isEmpty()) {
+                    eventTextField.setText(currentEvent);
+                    resultTextField.setText("");
+                } else {
+                    eventTextField.setText("No event generated.");
+                }
+            } else {
+                eventTextField.setText("Please handle the current event first.");
+            }
         } else {
-            eventTextField.setText("No bee has been selected!");
+            eventTextField.setText("No bee selected!");
         }
     }
 
     @FXML
     protected void noButtonAction() {
-        if (currentBee != null) {
-            eventTextField.setText("Okay, no action taken. Let me know if you'd like to do something else!");
+        if (currentBee != null && currentEvent != null) {
+            String result = actionsAndEvents.handleEvent(currentBee.getType(), false);
+            resultTextField.setText(result);
+
+            if (result.contains("Game over")) {
+                navigateToEndView();
+            } else {
+                eventHandled = true;
+                noButton.setDisable(true);
+                resultTextField.setText("Press Yes to continue.");
+            }
         } else {
-            eventTextField.setText("No bee has been selected!");
+            eventTextField.setText("No active event to handle!");
         }
     }
 
@@ -65,10 +97,20 @@ public class MainViewController {
         eventTextField.setText("Speaker functionality not yet implemented.");
     }
 
-    @FXML
-    protected void initialize(){
-        eventTextField.setText("Congratulations on being born!!\n Click yes to start working");
+    private void navigateToEndView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("end-view.fxml"));
+            Parent root = loader.load();
 
+            Stage stage = (Stage) yesButton.getScene().getWindow();
+            Scene endScene = new Scene(root);
+            stage.setScene(endScene);
+            stage.show();
 
+            EndViewController endController = loader.getController();
+            endController.displayBeeStats(currentBee);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

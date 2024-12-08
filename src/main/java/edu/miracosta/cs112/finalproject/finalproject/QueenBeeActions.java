@@ -12,7 +12,7 @@ public class QueenBeeActions extends Bee {
     }
 
     @Override
-    public int lifeSpan() {
+    public int getlifeSpan() {
         return Constants.QUEEN_LIFESPAN;
     }
 }
