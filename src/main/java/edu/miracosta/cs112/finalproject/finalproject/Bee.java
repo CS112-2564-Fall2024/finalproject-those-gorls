@@ -70,19 +70,15 @@ public abstract class Bee {
     }
 
     public String toString() {
-        // Return a summary of the bee's life (you can customize this as needed)
         return "Bee Type: " + role + ", Time Alive: " + timeAlive + " days";
     }
 
     public String stats() {
-        // Provide additional stats if necessary (this can be customized)
         return "Last Event: " + (lastEventResult != null ? lastEventResult : "No events yet");
     }
 
     // abstract methods
-    //public abstract String toString();
     public abstract int getLifeSpan();
-    //public abstract String stats();
 
     // method for type identification
     public String getType() {

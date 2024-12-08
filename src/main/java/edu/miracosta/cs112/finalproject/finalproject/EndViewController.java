@@ -26,20 +26,14 @@ public class EndViewController {
     @FXML
     private ImageView beeImageView;
 
-    // Display bee stats when the game ends
     public void displayBeeStats(Bee bee) {
-        // Set the main end screen image
         URL imageViewURL = Application.class.getResource("/edu/miracosta/cs112/finalproject/finalproject/img.png");
         if (imageViewURL != null) {
             endScreenImage.setImage(new Image(imageViewURL.toString()));
         }
 
-        // Set title
         titleTextField.setText("Game Over: Bee Life of a " + bee.getType());
 
-        String deathReason = determineDeathReason(bee);
-
-        // Display bee image
         String imageFilePath = "/edu/miracosta/cs112/finalproject/finalproject/" + bee.getType().toLowerCase() + ".png";
         URL beeImageURL = Application.class.getResource(imageFilePath);
         if (beeImageURL != null) {
@@ -47,28 +41,26 @@ public class EndViewController {
         }
 
         summaryTextField.setText(
-                "Final Moments: " + deathReason
+                "Final Moments: " + bee.getLastEventResult() + MainViewController.determineDeathReason
         );
 
-        // Set restart button text
         restartButton.setText("Restart Game");
     }
 
-    private String determineDeathReason(Bee bee) {
-        String deathReason = bee.getLastEventResult();
-        if (deathReason == null || deathReason.isEmpty()) {
-            deathReason = "The cause of death is unknown.";
-        }
-        if (bee.getTimeAlive() >= 7) {
-            deathReason = "The bee lived a long and fulfilling life, eventually passing away from old age.";
-        }
-
-        return deathReason;
-    }
+//    private String determineDeathReason(Bee bee) {
+//        String deathReason = bee.getLastEventResult();
+//        if (deathReason == null || deathReason.isEmpty()) {
+//            deathReason = "The cause of death is unknown.";
+//        }
+//        if (bee.getTimeAlive() >= 7) {
+//            deathReason = "The bee lived a long and fulfilling life, eventually passing away from old age.";
+//        }
+//
+//        return deathReason;
+//    }
 
     @FXML
     private void restartGame() {
-        // Restart the game, return to the start screen
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("start-view.fxml"));
             Parent root = loader.load();

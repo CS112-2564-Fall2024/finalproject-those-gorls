@@ -74,7 +74,6 @@ public class StartScreenController{
 
         stage.show();
 
-        // Close the current window
         ((Stage) droneBeeButton.getScene().getWindow()).close();
     }
 }
