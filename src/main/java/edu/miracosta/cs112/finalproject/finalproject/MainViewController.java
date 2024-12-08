@@ -1,32 +1,23 @@
 package edu.miracosta.cs112.finalproject.finalproject;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import java.net.URL;
+import java.net.URL;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MainViewController {
-    @FXML
-    private ImageView mainScreenImage;
-    @FXML
-    private ImageView speakerImageView;
-    @FXML
-    private Button speakerButton;
-    @FXML
-    private TextField resultTextField;
-    @FXML
-    private Button yesButton;
-    @FXML
-    private Button noButton;
-    @FXML
-    private TextField beeInfoRight;
     @FXML
     private TextField eventTextField;
     @FXML
@@ -50,6 +41,8 @@ public class MainViewController {
         } else {
             eventTextField.setText("No bee selected.");
         }
+        beeInfoLeft.setText(newBee.toString());
+        beeInfoRight.setText(newBee.stats());
     }
 
 
@@ -94,9 +87,20 @@ public class MainViewController {
 
     @FXML
     protected void speakerButtonAction(){
-        eventTextField.setText("Speaker functionality not yet implemented.");
+//        Media sound = new Media("/edu/miracosta/cs112/finalproject/finalproject/beeSound.mp3");
+//        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+//        mediaPlayer.play();
     }
 
+    @FXML
+    protected void initialize(){
+        yesButton.setText("YES");
+        noButton.setText("NO");
+        eventTextField.setText("Congratulations on being born!!\n Click yes to start working");
+        URL speakerURL = Application.class.getResource("/edu/miracosta/cs112/finalproject/finalproject/img_1.png");
+        System.out.println("Image URL: " + speakerURL);
+        assert speakerURL != null;
+        speakerImageView.setImage(new Image(speakerURL.toString()));
     private void navigateToEndView() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("end-view.fxml"));

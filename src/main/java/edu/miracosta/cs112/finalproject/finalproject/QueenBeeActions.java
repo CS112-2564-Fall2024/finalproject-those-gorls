@@ -7,13 +7,19 @@ public class QueenBeeActions extends Bee {
     }
 
     @Override
-    public String toString() {
-        return "Bee Role: Queen\nSize: " + getSizeInCm() + " cm\nGender: " + getGender();
+    public String toString(){
+        return "Bee Role: Queen\n Size: " + getSizeInCm() + " cm\n Gender: " + getGender();
     }
 
     @Override
     public int getlifeSpan() {
         return Constants.QUEEN_LIFESPAN;
     }
-}
+    @Override
+    public String stats(){
+        return "Life span: " + lifeSpan() + "\n Season: Spring";
+    }
 
+
+
+}
