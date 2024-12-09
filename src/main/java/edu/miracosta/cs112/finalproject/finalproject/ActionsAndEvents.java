@@ -69,7 +69,7 @@ import java.util.Random;
         private String getRandomDroneEvent() {
             String[] events = {
                 "The nectar looks very tempting, would you like to sneak a little taste?",
-                "The queen seems very busy today, would you like to offer the queen a snack?",
+                "The queen has been working very hard today, would you like to offer the queen a snack?",
                 "The queen is only mating with five drones today, would you like to volunteer?",
                 "The queen declared no work today, would you like to explore the outdoors?",
                 "The queen makes eye contact with you across the room, would you like to wink back?",
@@ -106,7 +106,7 @@ import java.util.Random;
                 case "The nectar looks very tempting, would you like to sneak a little taste?" ->
                         userChoice ? "Game over. You were caught by the guards and publicly executed for treason!" :
                                 "Your self-control might have saved your life.";
-                case "The queen seems very busy today, would you like to offer the queen a snack?" ->
+                case "The queen has been working very hard today, would you like to offer the queen a snack?" ->
                         userChoice && random.nextDouble() < 0.25 ? "Game over. The queen was displeased and had you buried alive in honey" :
                                 "The queen appreciates the yummy snack.";
                 case "The queen is only mating with five drones today, would you like to volunteer?" ->
@@ -128,13 +128,13 @@ import java.util.Random;
                 case "Laying eggs is a lot of work, would you like to ask your servant for a drink?" ->
                         userChoice && random.nextDouble() < 0.25 ? "Game over. The servant poisoned you!" : "Refreshing!";
                 case "The nectar looks very tempting, would you like to sneak a little taste?" ->
-                        "Being a queen is all about the tough decisions.";
+                        "Silly bee! You're queen, you never have to 'sneak a taste'.";
                 case "The weather is beautiful today! Would you like to announce a day off to the bees?" ->
-                        "Being a queen is all about the tough decisions.";
+                        "The bees are thankful for your kindness.";
                 case "A drone bee asked for extra food rations this week, would you like to punish him?" ->
                         "Being a queen is all about the tough decisions.";
                 case "A bear is attacking the hive! Do you want to assemble the worker bees to attack?" ->
-                        "Being a queen is all about the tough decisions.";
+                        "We lost many workers along the way, but atleast the hive is safe.";
                 case "Winter is approaching and food is sparse, would you like to kick the drones out of the hive?" ->
                         userChoice ? "They will be missed." : "Game over. The hive starved to death.";
                 case "The bees are getting worried for the queen, would you like to make a public appearance to reassure your subjects?" ->

@@ -15,7 +15,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class MainViewController {
     @FXML
@@ -53,6 +52,7 @@ public class MainViewController {
     private void displayInitialEvent() {
         if (currentBee != null) {
             eventTextField.setText("Welcome to the hive! \nClick Yes to start working!");
+            updateMainScreenImage("initial_" + currentBee.getRole().toLowerCase() + ".png");
         } else {
             eventTextField.setText("No bee selected.");
         }
@@ -61,7 +61,12 @@ public class MainViewController {
         noButton.setDisable(true);
     }
 
-
+    private void updateMainScreenImage(String imageName) {
+        URL imageURL = Application.class.getResource("/edu/miracosta/cs112/finalproject/finalproject/" + imageName);
+        if (imageURL != null) {
+            mainScreenImage.setImage(new Image(imageURL.toString()));
+        }
+    }
 
     @FXML
     protected void yesButtonAction() {
@@ -77,6 +82,8 @@ public class MainViewController {
                                 resultTextField.setText(result);
                             }
                         });
+
+                        updateImageBasedOnEvent(currentEvent, result);
 
                         if (result.contains("Game over")) {
                             navigateToEndView();
@@ -99,6 +106,7 @@ public class MainViewController {
                 if (currentEvent != null && !currentEvent.isEmpty()) {
                     eventTextField.setText(currentEvent);
                     resultTextField.setText("");
+                    updateImageBasedOnEvent(currentEvent, "");
                     eventHandled = false;
                     noButton.setDisable(false);
                 } else {
@@ -107,6 +115,37 @@ public class MainViewController {
             }
         }
     }
+
+    private void updateImageBasedOnEvent(String event, String result) {
+        if (result.contains("Game over")) {
+            updateMainScreenImage("game_over_" + currentBee.getRole().toLowerCase() + ".png");
+            return;
+        }
+
+        String imageName = "event_" + currentBee.getRole().toLowerCase() + "_";
+        if (event.contains("flower")) {
+            imageName += "flowers.png";
+        } else if (event.contains("nectar")) {
+            imageName += "sneakingHoney.png";
+        } else if (event.contains("queen")) {
+            imageName += "queen.png";
+        } else if (event.contains("bear")) {
+            imageName += "bear.jpg";
+        } else if (event.contains("sky") || event.contains("cloudy")) {
+            imageName += "stormy.webp";
+        } else if (event.contains("larvae")) {
+            imageName += "royalJelly.png";
+        } else if (event.contains("winter") || event.contains("food")) {
+            imageName += "snow.webp";
+        } else if (event.contains("outdoors")) {
+            imageName += "sunny.webp";
+        } else {
+            imageName = "initial_" + currentBee.getRole().toLowerCase() + ".png";
+        }
+
+        updateMainScreenImage(imageName);
+    }
+
 
     @FXML
     protected void noButtonAction() {
@@ -132,6 +171,8 @@ public class MainViewController {
                     }
                 });
 
+                updateImageBasedOnEvent(currentEvent, result);
+
                 if (result.contains("Game over")) {
                     navigateToEndView();
                 } else {
@@ -149,7 +190,6 @@ public class MainViewController {
             }
         }
     }
-
     @FXML
     protected void speakerButtonAction(){
         String filePath = "/edu/miracosta/cs112/finalproject/finalproject/bee-flying.mp3";
@@ -168,7 +208,7 @@ public class MainViewController {
         yesButton.setText("YES");
         noButton.setText("NO");
         displayInitialEvent();
-        URL speakerURL = Application.class.getResource("/edu/miracosta/cs112/finalproject/finalproject/img_1.png");
+        URL speakerURL = Application.class.getResource("/edu/miracosta/cs112/finalproject/finalproject/soundButton.png");
         if (speakerURL != null) {
             speakerImageView.setImage(new Image(speakerURL.toString()));
         }
