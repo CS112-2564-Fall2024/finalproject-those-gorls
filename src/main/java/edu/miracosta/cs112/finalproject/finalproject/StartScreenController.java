@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,9 +17,9 @@ import java.net.URL;
 public class StartScreenController{
 
     @FXML
-    private TextField titleTextField;
+    private Label titleTextField;
     @FXML
-    private TextField intructiionsTextField;
+    private Label intructiionsTextField;
     @FXML
     private Button droneBeeButton;
     @FXML

@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -25,17 +26,17 @@ public class MainViewController {
     @FXML
     private ImageView speakerImageView;
     @FXML
-    private TextField resultTextField;
+    private Label resultTextField;
     @FXML
     private Button yesButton;
     @FXML
     private Button noButton;
     @FXML
-    private TextField beeInfoRight;
+    private Label beeInfoRight;
     @FXML
-    private TextArea eventTextField;
+    private Label eventTextField;
     @FXML
-    private TextField beeInfoLeft;
+    private Label beeInfoLeft;
 
     private Bee currentBee;
     private final ActionsAndEvents actionsAndEvents = new ActionsAndEvents();
@@ -53,7 +54,7 @@ public class MainViewController {
     private void displayInitialEvent() {
         if (currentBee != null) {
             eventTextField.setText("Welcome to the hive! \nClick Yes to start working!");
-            updateMainScreenImage("initial_" + currentBee.getRole().toLowerCase() + ".png");
+            updateMainScreenImage(currentBee.getRole().toLowerCase() + ".png");
         } else {
             eventTextField.setText("No bee selected.");
         }
@@ -69,7 +70,7 @@ public class MainViewController {
         } else {
             System.out.println("Image not found: " + imageName);
             //default or placeholder image
-            URL defaultImageURL = Application.class.getResource("/edu/miracosta/cs112/finalproject/finalproject/" + currentBee.getRole().toLowerCase() + ".jpg" );
+            URL defaultImageURL = Application.class.getResource("/edu/miracosta/cs112/finalproject/finalproject/" + currentBee.getRole().toLowerCase() + ".png" );
             if (defaultImageURL != null) {
                 mainScreenImage.setImage(new Image(defaultImageURL.toString()));
             }
@@ -101,11 +102,15 @@ public class MainViewController {
             imageName = "stormy.jpg";
         } else if (event.contains("larvae")) {
             imageName = "royalJelly.png";
-        } else if (event.contains("winter") || event.contains("food")) {
+        } else if (event.contains("winter") || event.contains("scarce")) {
             imageName = "snow.jpg";
         } else if (event.contains("outdoors")) {
             imageName = "sunny.jpg";
-        } else {
+        }
+        else if(event.contains("rations")){
+            imageName = "sadDrone.png";
+        }
+        else {
             imageName = currentBee.getRole().toLowerCase() + ".jpg";
         }
 

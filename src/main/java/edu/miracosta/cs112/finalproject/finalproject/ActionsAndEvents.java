@@ -138,7 +138,7 @@ import java.util.Random;
                 case "A bear is attacking the hive! Do you want to assemble the worker bees to attack?" ->
                         userChoice ? "We lost many workers along the way, but at least the hive is safe.":
                         "Game over. Everyone perished.";
-                case "Winter is approaching and food is sparse, would you like to kick the drones out of the hive?" ->
+                case "Winter is approaching and food is scarce, would you like to kick the drones out of the hive?" ->
                         userChoice ? "They will be missed." : "Game over. The hive starved to death.";
                 case "The bees are getting worried for the queen, would you like to make a public appearance to reassure your subjects?" ->
                         userChoice ? " Your subjects were pleased to see you.": "Game over! Your subjects revolted.";

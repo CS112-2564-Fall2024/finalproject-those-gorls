@@ -7,11 +7,12 @@
 
 
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Label?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
       prefHeight="679.0" prefWidth="551.0"
       xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="edu.miracosta.cs112.finalproject.finalproject.MainViewController">
+      fx:controller="edu.miracosta.cs112.finalproject.finalproject.MainViewController" style="-fx-background-color: #FBCA84;">
 
    <ImageView fx:id="mainScreenImage" fitHeight="329.0" fitWidth="519.0"
               layoutX="14.0" layoutY="14.0"
@@ -25,31 +26,31 @@
            mnemonicParsing="false" onAction="#speakerButtonAction"
            opacity="0.01" prefHeight="68.0" prefWidth="71.0" />
 
-   <TextArea fx:id="eventTextField"
+   <Label fx:id="eventTextField" alignment="CENTER"
              layoutX="14.0" layoutY="352.0"
              prefHeight="143.0" prefWidth="512.0"
-             text="Welcome to the hive!" />
+             text="Welcome to the hive!" wrapText="true"/>
 
-   <TextField fx:id="resultTextField" alignment="CENTER"
+   <Label fx:id="resultTextField" alignment="CENTER"
               layoutX="14.0" layoutY="586.0"
               prefHeight="60.0" prefWidth="512.0"
-              text="Result will appear here" />
+              text="Result will appear here" wrapText="true" />
 
    <Button fx:id="yesButton" layoutX="14.0" layoutY="510.0"
            mnemonicParsing="false" onAction="#yesButtonAction"
-           prefHeight="68.0" prefWidth="230.0" />
+           prefHeight="68.0" prefWidth="230.0" style="-fx-background-color: #f7e9d2;"/>
 
    <Button fx:id="noButton" layoutX="303.0" layoutY="510.0"
            mnemonicParsing="false" onAction="#noButtonAction"
-           prefHeight="68.0" prefWidth="230.0" />
+           prefHeight="68.0" prefWidth="230.0" style="-fx-background-color: #f7e9d2;"/>
 
-   <TextField fx:id="beeInfoLeft" alignment="TOP_LEFT"
-              layoutX="321.0" layoutY="14.0"
+   <Label fx:id="beeInfoLeft" alignment="TOP_LEFT"
+              layoutX="380.0" layoutY="14.0"
               prefHeight="68.0" prefWidth="230.0"
               text="Bee Details" />
 
-   <TextField fx:id="beeInfoRight" alignment="TOP_LEFT"
-              layoutX="321.0" layoutY="92.0"
+   <Label fx:id="beeInfoRight" alignment="TOP_LEFT"
+              layoutX="380.0" layoutY="92.0"
               prefHeight="68.0" prefWidth="230.0"
               text="Bee Stats" />
 </Pane>

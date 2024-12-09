@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -19,9 +20,9 @@ public class EndViewController {
     @FXML
     private ImageView endScreenImage;
     @FXML
-    private TextField titleTextField;
+    private Label titleTextField;
     @FXML
-    private TextArea summaryTextArea;
+    private Label summaryTextArea;
     @FXML
     private Button restartButton;
     @FXML

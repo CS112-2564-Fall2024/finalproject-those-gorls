@@ -5,13 +5,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="551.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.miracosta.cs112.finalproject.finalproject.StartScreenController">
+<?import javafx.scene.control.Label?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="551.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.miracosta.cs112.finalproject.finalproject.StartScreenController" style="-fx-background-color: #FBCA84;">
    <children>
       <ImageView fx:id="startScreenImage" fitHeight="671.0" fitWidth="544.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField fx:id="titleTextField" alignment="CENTER" layoutX="111.0" layoutY="48.0" prefHeight="92.0" prefWidth="329.0" text="title" />
-      <TextField fx:id="intructiionsTextField" layoutX="89.0" layoutY="376.0" prefHeight="107.0" prefWidth="371.0" text="howToStart" />
-      <Button fx:id="droneBeeButton" layoutX="50.0" layoutY="524.0" mnemonicParsing="false" onAction="#droneBeeChoice" prefHeight="92.0" prefWidth="122.0" text="droneBeeButton" />
-      <Button fx:id="workerBeeButton" layoutX="214.0" layoutY="524.0" mnemonicParsing="false" onAction="#workerBeeChoice" prefHeight="92.0" prefWidth="122.0" text="workerBeeButton" />
-      <Button fx:id="queenBeeButton" layoutX="379.0" layoutY="524.0" mnemonicParsing="false" onAction="#queenBeeChoice" prefHeight="92.0" prefWidth="122.0" text="queenBeeButton" />
+      <Label fx:id="titleTextField" alignment="CENTER" layoutX="111.0" layoutY="300.0" prefHeight="92.0" prefWidth="329.0" text="title" />
+      <Label fx:id="intructiionsTextField" layoutX="89.0" layoutY="376.0" prefHeight="107.0" prefWidth="371.0" alignment="CENTER" text="howToStart" />
+      <Button fx:id="droneBeeButton" layoutX="50.0" layoutY="524.0" mnemonicParsing="false" onAction="#droneBeeChoice" prefHeight="92.0" prefWidth="122.0" text="droneBeeButton" style="-fx-background-color: #f7e9d2;"/>
+      <Button fx:id="workerBeeButton" layoutX="214.0" layoutY="524.0" mnemonicParsing="false" onAction="#workerBeeChoice" prefHeight="92.0" prefWidth="122.0" text="workerBeeButton" style="-fx-background-color: #f7e9d2;"/>
+      <Button fx:id="queenBeeButton" layoutX="379.0" layoutY="524.0" mnemonicParsing="false" onAction="#queenBeeChoice" prefHeight="92.0" prefWidth="122.0" text="queenBeeButton" style="-fx-background-color: #f7e9d2;"/>
    </children>
 </Pane>
