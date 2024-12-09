@@ -70,7 +70,7 @@ public abstract class Bee {
     }
 
     public String toString() {
-        return "Bee Type: " + role + ", Time Alive: " + timeAlive + " days";
+        return "Bee Type: " + getType() + ", Time Alive: " + timeAlive + " days";
     }
 
     public String stats() {

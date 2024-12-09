@@ -2,15 +2,17 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.StackPane?>
-
 <?import javafx.scene.layout.Pane?>
+
+<?import javafx.scene.control.TextArea?>
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="679.0" prefWidth="551.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.miracosta.cs112.finalproject.finalproject.EndViewController">
     <children>
         <ImageView fx:id="endScreenImage" fitHeight="671.0" fitWidth="544.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
-        <TextField fx:id="titleTextField" alignment="CENTER" layoutX="111.0" layoutY="48.0" prefHeight="92.0" prefWidth="329.0" text="Game Over" />
-        <ImageView fx:id="beeImageView" fitHeight="200.0" fitWidth="200.0" layoutX="175.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" />
-        <TextField fx:id="summaryTextField" layoutX="89.0" layoutY="425.0" prefHeight="107.0" prefWidth="371.0" text="Bee Life Summary" />
+        <TextField fx:id="titleTextField" alignment="CENTER" layoutX="111.0" layoutY="20.0" prefHeight="50.0" prefWidth="329.0" text="Game Over" />
+        <ImageView fx:id="beeImageView" fitHeight="550.0" fitWidth="520.0" layoutX="15.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
+        <TextArea fx:id="summaryTextArea" layoutX="89.0" layoutY="425.0" prefHeight="107.0" prefWidth="371.0" text="Bee Life Summary" />
         <Button fx:id="restartButton" layoutX="214.0" layoutY="552.0" mnemonicParsing="false" onAction="#restartGame" prefHeight="92.0" prefWidth="122.0" text="Restart Game" />
     </children>
 </Pane>
+
+

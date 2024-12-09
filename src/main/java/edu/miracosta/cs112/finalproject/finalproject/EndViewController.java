@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,7 +21,7 @@ public class EndViewController {
     @FXML
     private TextField titleTextField;
     @FXML
-    private TextField summaryTextField;
+    private TextArea summaryTextArea;
     @FXML
     private Button restartButton;
     @FXML
@@ -34,23 +35,30 @@ public class EndViewController {
 
         titleTextField.setText("Game Over: Bee Life of a " + bee.getType());
 
-        String imageFilePath = "/edu/miracosta/cs112/finalproject/finalproject/" + bee.getType().toLowerCase() + "_end.png";
-        URL beeImageURL = Application.class.getResource(imageFilePath);
+        String beeTypeLower = bee.getType().toLowerCase();
+        String endImageName = beeTypeLower + "End.jpeg";
+        URL beeImageURL = Application.class.getResource("/edu/miracosta/cs112/finalproject/finalproject/" + endImageName);
+
         if (beeImageURL != null) {
             beeImageView.setImage(new Image(beeImageURL.toString()));
+            System.out.println("Loaded end image: " + endImageName);
+        } else {
+            System.out.println("Failed to load end image: " + endImageName);
         }
 
+        String lastEventResult = bee.getLastEventResult();
         String deathReason = determineDeathReason(bee);
-        summaryTextField.setText(
-                "Final Moments: " + bee.getLastEventResult() + "\n" + deathReason
+        summaryTextArea.setText(
+                "Final Moments: " + lastEventResult + "\n" + deathReason
         );
+
 
         restartButton.setText("Restart Game");
     }
 
     private String determineDeathReason(Bee bee) {
         if (bee.getTimeAlive() >= 7) {
-            return "The bee lived a long and fulfilling life, eventually passing away from old age.";
+            return "The bee passed away from old age.";
         }
 
         String lastEvent = bee.getLastEventResult();

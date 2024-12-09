@@ -65,7 +65,50 @@ public class MainViewController {
         URL imageURL = Application.class.getResource("/edu/miracosta/cs112/finalproject/finalproject/" + imageName);
         if (imageURL != null) {
             mainScreenImage.setImage(new Image(imageURL.toString()));
+        } else {
+            System.out.println("Image not found: " + imageName);
+            //default or placeholder image
+            URL defaultImageURL = Application.class.getResource("/edu/miracosta/cs112/finalproject/finalproject/" + currentBee.getRole().toLowerCase() + ".jpg" );
+            if (defaultImageURL != null) {
+                mainScreenImage.setImage(new Image(defaultImageURL.toString()));
+            }
         }
+    }
+
+    private void updateImageBasedOnEvent(String event, String result) {
+        if (result.contains("Game over")) {
+            String gameOverImageName = "currentBee.getRole().toLowerCase()" + "End.jpeg";
+            updateMainScreenImage(gameOverImageName);
+            return;
+        }
+
+        if (!result.isEmpty()) {
+            updateMainScreenImage(currentBee.getRole().toLowerCase() + ".jpg");
+            return;
+        }
+
+        String imageName = "";
+        if (event.contains("flower")) {
+            imageName = "flowers.jpg";
+        } else if (event.contains("nectar")) {
+            imageName = "sneakingHoney.png";
+        } else if (event.contains("room") || event.contains("subjects")) {
+            imageName = "uneasySubjects.jpg";
+        } else if (event.contains("bear")) {
+            imageName = "bear.jpg";
+        } else if (event.contains("sky") || event.contains("cloudy")) {
+            imageName = "stormy.webp";
+        } else if (event.contains("larvae")) {
+            imageName = "royalJelly.png";
+        } else if (event.contains("winter") || event.contains("food")) {
+            imageName = "snow.webp";
+        } else if (event.contains("outdoors")) {
+            imageName = "sunny.webp";
+        } else {
+            imageName = currentBee.getRole().toLowerCase() + ".jpg";
+        }
+
+        updateMainScreenImage(imageName);
     }
 
     @FXML
@@ -82,7 +125,7 @@ public class MainViewController {
                                 resultTextField.setText(result);
                             }
                         });
-
+                        currentBee.setLastEventResult(result);
                         updateImageBasedOnEvent(currentEvent, result);
 
                         if (result.contains("Game over")) {
@@ -116,35 +159,6 @@ public class MainViewController {
         }
     }
 
-    private void updateImageBasedOnEvent(String event, String result) {
-        if (result.contains("Game over")) {
-            updateMainScreenImage("game_over_" + currentBee.getRole().toLowerCase() + ".png");
-            return;
-        }
-
-        String imageName = "event_" + currentBee.getRole().toLowerCase() + "_";
-        if (event.contains("flower")) {
-            imageName += "flowers.png";
-        } else if (event.contains("nectar")) {
-            imageName += "sneakingHoney.png";
-        } else if (event.contains("queen")) {
-            imageName += "queen.png";
-        } else if (event.contains("bear")) {
-            imageName += "bear.jpg";
-        } else if (event.contains("sky") || event.contains("cloudy")) {
-            imageName += "stormy.webp";
-        } else if (event.contains("larvae")) {
-            imageName += "royalJelly.png";
-        } else if (event.contains("winter") || event.contains("food")) {
-            imageName += "snow.webp";
-        } else if (event.contains("outdoors")) {
-            imageName += "sunny.webp";
-        } else {
-            imageName = "initial_" + currentBee.getRole().toLowerCase() + ".png";
-        }
-
-        updateMainScreenImage(imageName);
-    }
 
 
     @FXML
@@ -170,7 +184,7 @@ public class MainViewController {
                         resultTextField.setText(result);
                     }
                 });
-
+                currentBee.setLastEventResult(result);
                 updateImageBasedOnEvent(currentEvent, result);
 
                 if (result.contains("Game over")) {
@@ -212,16 +226,6 @@ public class MainViewController {
         if (speakerURL != null) {
             speakerImageView.setImage(new Image(speakerURL.toString()));
         }
-    }
-
-    private String determineDeathReason(Bee bee) {
-        if (bee.getTimeAlive() >= 7) {
-            return "The bee lived a long and fulfilling life, eventually passing due to old age.";
-        }
-        if (bee.getLastEventResult().contains("Game over")) {
-            return "The bee's journey came to an untimely end after making a poor decision during an event.";
-        }
-        return "The bee's journey came to an end, leaving behind a legacy in the hive.";
     }
 
     private void navigateToEndView() {

@@ -3,7 +3,7 @@ package edu.miracosta.cs112.finalproject.finalproject;
 public class WorkerBee extends Bee {
 
     public WorkerBee() {
-        super(Constants.WORKER_NAME, Constants.WORKER_SIZE, Constants.WORKER_GENDER, "Worker", 0);
+        super(Constants.WORKER_NAME, Constants.WORKER_SIZE, Constants.WORKER_GENDER, "worker", 0);
     }
 
     @Override

@@ -3,7 +3,7 @@ package edu.miracosta.cs112.finalproject.finalproject;
 public class DroneBee extends Bee {
 
     public DroneBee() {
-        super(Constants.DRONE_NAME, Constants.DRONE_SIZE, Constants.DRONE_GENDER, "Drone", 0);
+        super(Constants.DRONE_NAME, Constants.DRONE_SIZE, Constants.DRONE_GENDER, "drone", 0);
     }
 
     @Override
