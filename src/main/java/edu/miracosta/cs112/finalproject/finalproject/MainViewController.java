@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,7 +33,7 @@ public class MainViewController {
     @FXML
     private TextField beeInfoRight;
     @FXML
-    private TextField eventTextField;
+    private TextArea eventTextField;
     @FXML
     private TextField beeInfoLeft;
 
@@ -97,13 +98,13 @@ public class MainViewController {
         } else if (event.contains("bear")) {
             imageName = "bear.jpg";
         } else if (event.contains("sky") || event.contains("cloudy")) {
-            imageName = "stormy.webp";
+            imageName = "stormy.jpg";
         } else if (event.contains("larvae")) {
             imageName = "royalJelly.png";
         } else if (event.contains("winter") || event.contains("food")) {
-            imageName = "snow.webp";
+            imageName = "snow.jpg";
         } else if (event.contains("outdoors")) {
-            imageName = "sunny.webp";
+            imageName = "sunny.jpg";
         } else {
             imageName = currentBee.getRole().toLowerCase() + ".jpg";
         }

@@ -113,7 +113,7 @@ import java.util.Random;
                         "The hive salutes you for your loyalty.";
                 case "The queen declared no work today, would you like to explore the outdoors?" ->
                         userChoice ? "Game over. You only lasted 3 minutes in the wild before getting ran over by a tricycle." :
-                                "You stayed inside the hive where eit is safe";
+                                "You stayed inside the hive where it is safe";
                 case "The queen makes eye contact with you across the room, would you like to wink back?" ->
                         userChoice ? "Game over. The queen has you executed for humiliating her." :
                                 "Good thing you didn't respond, the queen was just staring off.";
@@ -136,7 +136,7 @@ import java.util.Random;
                 case "A drone bee asked for extra food rations this week, would you like to punish him?" ->
                         "Being a queen is all about the tough decisions.";
                 case "A bear is attacking the hive! Do you want to assemble the worker bees to attack?" ->
-                        userChoice ? "We lost many workers along the way, but atleast the hive is safe.":
+                        userChoice ? "We lost many workers along the way, but at least the hive is safe.":
                         "Game over. Everyone perished.";
                 case "Winter is approaching and food is sparse, would you like to kick the drones out of the hive?" ->
                         userChoice ? "They will be missed." : "Game over. The hive starved to death.";
