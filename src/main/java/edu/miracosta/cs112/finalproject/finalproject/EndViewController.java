@@ -6,8 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -34,7 +32,7 @@ public class EndViewController {
             endScreenImage.setImage(new Image(imageViewURL.toString()));
         }
 
-        titleTextField.setText("The life of a " + bee.getType());
+        titleTextField.setText("The life of a " + bee.getName());
 
         String beeTypeLower = bee.getType().toLowerCase();
         String endImageName = beeTypeLower + "End.jpeg";

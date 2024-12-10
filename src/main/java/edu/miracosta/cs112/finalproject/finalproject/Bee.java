@@ -8,6 +8,8 @@ public abstract class Bee {
     public int timeAlive;
     private int eventCount = 0;
     private String lastEventResult;
+    private String color;
+    private String tasks;
 
     //Constructors
     public void incrementEventCount() {
@@ -31,12 +33,14 @@ public abstract class Bee {
     }
 
     //Full: sets the bee with parameters
-    public Bee(String name, int size, String gender, String role, int timeAlive){
+    public Bee(String name, int size, String gender, String role, int timeAlive, String color, String tasks ) {
         this.name = name;
         this.sizeInCm = size;
         this.gender = gender;
         this.role = role;
         this.timeAlive = timeAlive;
+        this.color = color;
+        this.tasks = tasks;
     }
     //Getters
     public String getName(){
@@ -55,6 +59,8 @@ public abstract class Bee {
     public int getTimeAlive() {
         return timeAlive;
     }
+    public String getColor() {return color;}
+    public String getTasks() {return tasks;}
 
     public String getLastEventResult() {
         return lastEventResult;
@@ -80,6 +86,8 @@ public abstract class Bee {
         this.lastEventResult = result;
         incrementEventCount();
     }
+    public void setColor(String color) { this.color = color; }
+    public void setTasks(String tasks) { this.tasks = tasks; }
     /**
      * method for type identification
      * @return the identity of the bee

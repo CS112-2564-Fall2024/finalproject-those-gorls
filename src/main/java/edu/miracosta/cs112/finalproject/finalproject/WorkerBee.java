@@ -3,7 +3,7 @@ package edu.miracosta.cs112.finalproject.finalproject;
 public class WorkerBee extends Bee {
 
     public WorkerBee() {
-        super(Constants.WORKER_NAME, Constants.WORKER_SIZE, Constants.WORKER_GENDER, "worker", 0);
+        super(Constants.WORKER_NAME, Constants.WORKER_SIZE, Constants.WORKER_GENDER, "worker", 0, Constants.WORKER_COLOR, Constants.WORKER_TASKS);
     }
 
     @Override
@@ -17,7 +17,7 @@ public class WorkerBee extends Bee {
     }
     @Override
     public String stats(){
-        return "Life span: " + getLifeSpan() + "weeks\n Season: Spring";
+        return "Expected Life Span: " + getLifeSpan() + " days\n Primary color: " + getColor() + "\nUsual Tasks: " + getTasks();
     }
 }
 

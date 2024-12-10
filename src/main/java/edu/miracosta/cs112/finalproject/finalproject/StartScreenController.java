@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -33,7 +32,7 @@ public class StartScreenController{
      @FXML
      protected void initialize(){
          titleTextField.setText("Welcome to: \nTo Bee Or Not To Bee!");
-         intructiionsTextField.setText("    Choose which role of bee you would like to bee beelow!");
+         intructiionsTextField.setText("Choose which role of bee you would like to bee beelow!");
          droneBeeButton.setText("Drone Bee");
          workerBeeButton.setText("Worker Bee");
          queenBeeButton.setText("Queen Bee");

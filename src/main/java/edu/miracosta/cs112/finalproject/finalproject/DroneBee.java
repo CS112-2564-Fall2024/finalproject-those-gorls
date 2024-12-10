@@ -3,7 +3,7 @@ package edu.miracosta.cs112.finalproject.finalproject;
 public class DroneBee extends Bee {
 
     public DroneBee() {
-        super(Constants.DRONE_NAME, Constants.DRONE_SIZE, Constants.DRONE_GENDER, "drone", 0);
+        super(Constants.DRONE_NAME, Constants.DRONE_SIZE, Constants.DRONE_GENDER, "drone", 0, Constants.DRONE_COLOR, Constants.DRONE_TASKS);
     }
 
     @Override
@@ -17,7 +17,7 @@ public class DroneBee extends Bee {
     }
     @Override
     public String stats(){
-        return "Life span: " + getLifeSpan() + " days\n Season: Spring";
+        return "Expected Life Span: " + getLifeSpan() + " days\n Primary color: " + getColor() + "\nUsual Tasks: " + getTasks();
     }
 }
 
