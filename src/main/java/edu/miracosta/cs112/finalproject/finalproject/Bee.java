@@ -6,9 +6,21 @@ public abstract class Bee {
     public String gender;
     public String role;
     public int timeAlive;
+    private int eventCount = 0;
     private String lastEventResult;
 
     //Constructors
+    public void incrementEventCount() {
+        eventCount++;
+    }
+
+    public int getEventCount() {
+        return eventCount;
+    }
+
+    public boolean hasReachedLifespan() {
+        return eventCount >= 7;
+    }
     //Default: sets the bee with no parameters
     public Bee(){
         this.name = "Unknown";
@@ -66,13 +78,8 @@ public abstract class Bee {
     }
     public void setLastEventResult(String result) {
         this.lastEventResult = result;
+        incrementEventCount();
     }
-
-    // other methods
-    public void incrementTimeAlive(){
-        this.timeAlive++;
-    }
-
     /**
      * method for type identification
      * @return the identity of the bee

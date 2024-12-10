@@ -32,7 +32,7 @@ public class StartScreenController{
 
      @FXML
      protected void initialize(){
-         titleTextField.setText("Welcome to: To Bee Or Not To Bee!");
+         titleTextField.setText("Welcome to: \nTo Bee Or Not To Bee!");
          intructiionsTextField.setText("    Choose which role of bee you would like to bee beelow!");
          droneBeeButton.setText("Drone Bee");
          workerBeeButton.setText("Worker Bee");

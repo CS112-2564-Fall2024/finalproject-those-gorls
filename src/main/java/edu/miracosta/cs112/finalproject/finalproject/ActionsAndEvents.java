@@ -1,82 +1,80 @@
 package edu.miracosta.cs112.finalproject.finalproject;
 
-import java.util.Random;
+import java.util.*;
 
 
-    public class ActionsAndEvents {
-
+public class ActionsAndEvents {
         private final Random random = new Random();
         private String currentEvent;
 
-        public String generateEvent(String beeType) {
-            currentEvent = switch (beeType.toLowerCase()) {
-                case "worker" -> getRandomWorkerEvent();
-                case "drone" -> getRandomDroneEvent();
-                case "queen" -> getRandomQueenEvent();
-                default -> "Unknown Bee Type.";
-            };
-            return currentEvent;
+
+        private final Map<String, List<String>> eventCollections = Map.of(
+                "worker", Arrays.asList(
+                        "There is a pretty flower in the window, would you like to get a closer look?",
+                        "The nectar looks very tempting, would you like to sneak a little taste?",
+                        "The queen has requested all worker bees to the royal room, would you like to attend?",
+                        "A bear paw is attacking the hive! Would you like to attack?",
+                        "The sky is looking a bit cloudy... do you still want to go to work?",
+                        "The larvae are looking a little hungry, would you like to feed them royal jelly?",
+                        "Winter is approaching and food is scarce, would you like to kick the drones out of the hive?"
+                ),
+                "drone", Arrays.asList(
+                        "The nectar looks very tempting, would you like to sneak a little taste?",
+                        "The queen has been working very hard today, would you like to offer the queen a snack?",
+                        "The queen is only mating with five drones today, would you like to volunteer?",
+                        "The queen declared no work today, would you like to explore the outdoors?",
+                        "The queen makes eye contact with you across the room, would you like to wink back?",
+                        "The hive seems to be getting colder, would you like to find a warm place to relax?"
+                ),
+                "queen", Arrays.asList(
+                        "Laying eggs is a lot of work, would you like to ask your servant for a drink?",
+                        "The nectar looks very tempting, would you like to sneak a little taste?",
+                        "The weather is beautiful today! Would you like to announce a day off to the bees?",
+                        "A drone bee asked for extra food rations this week, would you like to punish him?",
+                        "A bear is attacking the hive! Do you want to assemble the worker bees to attack?",
+                        "Winter is approaching and food is scarce, would you like to kick the drones out of the hive?",
+                        "The bees are getting worried for the queen, would you like to make a public appearance to reassure your subjects?"
+                )
+        );
+
+        // Tracks available events for each bee type
+        private final Map<String, List<String>> availableEvents = new HashMap<>();
+
+    public ActionsAndEvents() {
+        // Initialize available events for each bee type
+        for (String beeType : eventCollections.keySet()) {
+            availableEvents.put(beeType, new ArrayList<>(eventCollections.get(beeType)));
+            Collections.shuffle(availableEvents.get(beeType));
+        }
+    }
+
+    public String generateEvent(String beeType) {
+        beeType = beeType.toLowerCase();
+
+        // Validate bee type
+        if (!availableEvents.containsKey(beeType)) {
+            return "Unknown Bee Type.";
         }
 
-        public String handleEvent(String beeType, boolean userChoice, String currentEvent) {
-            System.out.println("Handling event for bee type: " + beeType);
-            System.out.println("User choice: " + userChoice);
-            System.out.println("Current Event: " + currentEvent);
-
-            String result = switch (beeType.toLowerCase()) {
-                case "worker" -> handleWorkerBeeEvent(userChoice, currentEvent);
-                case "drone" -> handleDroneBeeEvent(userChoice, currentEvent);
-                case "queen" -> handleQueenBeeEvent(userChoice, currentEvent);
-                default -> {
-                    System.out.println("Unknown bee type: " + beeType);
-                    yield "Unknown Bee Type.";
-                }
-            };
-
-            System.out.println("Event result: " + result);
-            return result;
+        // Refill events if none left
+        if (availableEvents.get(beeType).isEmpty()) {
+            availableEvents.put(beeType, new ArrayList<>(eventCollections.get(beeType)));
+            Collections.shuffle(availableEvents.get(beeType));
         }
 
-        // Worker Bee Events
-        private String getRandomWorkerEvent() {
-            String[] events = {
-                "There is a pretty flower in the window, would you like to get a closer look?",
-                "The nectar looks very tempting, would you like to sneak a little taste?",
-                "The queen has requested all worker bees to the royal room, would you like to attend?",
-                "A bear paw is attacking the hive! Would you like to attack?",
-                "The sky is looking a bit cloudy... do you still want to go to work?",
-                "The larvae are looking a little hungry, would you like to feed them royal jelly?",
-                "Winter is approaching and food is scarce, would you like to kick the drones out of the hive?"
-            };
-            return events[random.nextInt(events.length)];
-        }
+        // Remove and return a random event
+        currentEvent = availableEvents.get(beeType).remove(0);
+        return currentEvent;
+    }
 
-        // Queen Bee Events
-        private String getRandomQueenEvent() {
-            String[] events = {
-                "Laying eggs is a lot of work, would you like to ask your servant for a drink?",
-                "The nectar looks very tempting, would you like to sneak a little taste?",
-                "The weather is beautiful today! Would you like to announce a day off to the bees?",
-                "A drone bee asked for extra food rations this week, would you like to punish him?",
-                "A bear is attacking the hive! Do you want to assemble the worker bees to attack?",
-                "Winter is approaching and food is sparse, would you like to kick the drones out of the hive?",
-                "The bees are getting worried for the queen, would you like to make a public appearance to reassure your subjects?"
-            };
-            return events[random.nextInt(events.length)];
-        }
-
-        // Drone Bee Events
-        private String getRandomDroneEvent() {
-            String[] events = {
-                "The nectar looks very tempting, would you like to sneak a little taste?",
-                "The queen has been working very hard today, would you like to offer the queen a snack?",
-                "The queen is only mating with five drones today, would you like to volunteer?",
-                "The queen declared no work today, would you like to explore the outdoors?",
-                "The queen makes eye contact with you across the room, would you like to wink back?",
-                "The hive seems to be getting colder, would you like to find a warm place to relax?"
-            };
-            return events[random.nextInt(events.length)];
-        }
+    public String handleEvent(String beeType, boolean userChoice, String currentEvent) {
+        return switch (beeType.toLowerCase()) {
+            case "worker" -> handleWorkerBeeEvent(userChoice, currentEvent);
+            case "drone" -> handleDroneBeeEvent(userChoice, currentEvent);
+            case "queen" -> handleQueenBeeEvent(userChoice, currentEvent);
+            default -> "Unknown Bee Type.";
+        };
+    }
 
         private String handleWorkerBeeEvent(boolean userChoice, String currentEvent) {
             return switch (currentEvent) {
@@ -110,7 +108,7 @@ import java.util.Random;
                         userChoice ? "Game over. The queen was displeased and had you buried alive in honey" :
                                 "Never bother the queen.";
                 case "The queen is only mating with five drones today, would you like to volunteer?" ->
-                        "The hive salutes you for your loyalty.";
+                        userChoice ? "The hive salutes you for your loyalty.": "Time to relax.";
                 case "The queen declared no work today, would you like to explore the outdoors?" ->
                         userChoice ? "Game over. You only lasted 3 minutes in the wild before getting ran over by a tricycle." :
                                 "You stayed inside the hive where it is safe";
@@ -119,7 +117,7 @@ import java.util.Random;
                                 "Good thing you didn't respond, the queen was just staring off.";
                 case "The hive seems to be getting colder, would you like to find a warm place to relax?" ->
                         userChoice ? "Game over. You realized the other drones were evicted due to limited food. You are caught and shortly meet the same demise.":
-                            "It seems the queen did her annual winter eviction. You will be missed";
+                            "Game over. It seems the queen did her annual winter eviction. You will be missed";
                 default -> "Unknown Drone Event.";
             };
         }
@@ -127,7 +125,7 @@ import java.util.Random;
         private String handleQueenBeeEvent(boolean userChoice, String currentEvent) {
             return switch (currentEvent) {
                 case "Laying eggs is a lot of work, would you like to ask your servant for a drink?" ->
-                        userChoice ? "Game over. The servant poisoned you!" : "Refreshing!";
+                        userChoice  ? "Game over. The servant poisoned you!" : "They probably poisoned it anyways.";
                 case "The nectar looks very tempting, would you like to sneak a little taste?" ->
                         "Silly bee! You're queen, you never have to 'sneak a taste'.";
                 case "The weather is beautiful today! Would you like to announce a day off to the bees?" ->

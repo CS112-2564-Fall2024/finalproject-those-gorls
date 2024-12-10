@@ -34,7 +34,7 @@ public class EndViewController {
             endScreenImage.setImage(new Image(imageViewURL.toString()));
         }
 
-        titleTextField.setText("Game Over: Bee Life of a " + bee.getType());
+        titleTextField.setText("The life of a " + bee.getType());
 
         String beeTypeLower = bee.getType().toLowerCase();
         String endImageName = beeTypeLower + "End.jpeg";
@@ -49,9 +49,7 @@ public class EndViewController {
 
         String lastEventResult = bee.getLastEventResult();
         String deathReason = determineDeathReason(bee);
-        summaryTextArea.setText(
-                "Final Moments: " + lastEventResult + "\n" + deathReason
-        );
+        summaryTextArea.setText(lastEventResult + "\n" + deathReason);
 
 
         restartButton.setText("Restart Game");

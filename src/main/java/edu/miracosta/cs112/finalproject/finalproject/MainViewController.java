@@ -7,8 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.net.URL;
@@ -54,7 +52,7 @@ public class MainViewController {
     private void displayInitialEvent() {
         if (currentBee != null) {
             eventTextField.setText("Welcome to the hive! \nClick Yes to start working!");
-            updateMainScreenImage(currentBee.getRole().toLowerCase() + ".png");
+            updateMainScreenImage(currentBee.getRole().toLowerCase() + ".jpg");
         } else {
             eventTextField.setText("No bee selected.");
         }
@@ -70,7 +68,7 @@ public class MainViewController {
         } else {
             System.out.println("Image not found: " + imageName);
             //default or placeholder image
-            URL defaultImageURL = Application.class.getResource("/edu/miracosta/cs112/finalproject/finalproject/" + currentBee.getRole().toLowerCase() + ".png" );
+            URL defaultImageURL = Application.class.getResource("/edu/miracosta/cs112/finalproject/finalproject/" + currentBee.getRole().toLowerCase() + ".jpg" );
             if (defaultImageURL != null) {
                 mainScreenImage.setImage(new Image(defaultImageURL.toString()));
             }
@@ -94,27 +92,29 @@ public class MainViewController {
             imageName = "flowers.jpg";
         } else if (event.contains("nectar")) {
             imageName = "sneakingHoney.png";
-        } else if (event.contains("room") || event.contains("subjects")) {
-            imageName = "uneasySubjects.jpg";
+        } else if (event.contains("requested") || event.contains("subjects")) {
+            imageName = "uneasySubjects.png";
         } else if (event.contains("bear")) {
             imageName = "bear.jpg";
-        } else if (event.contains("sky") || event.contains("cloudy")) {
+        } else if (event.contains("cloudy")) {
             imageName = "stormy.jpg";
-        } else if (event.contains("larvae")) {
+        } else if (event.contains("larvae") || event.contains("snack")) {
             imageName = "royalJelly.png";
         } else if (event.contains("winter") || event.contains("scarce")) {
             imageName = "snow.jpg";
-        } else if (event.contains("outdoors")) {
+        } else if (event.contains("declared") || event.contains("beautiful")) {
             imageName = "sunny.jpg";
-        }
-        else if(event.contains("rations")){
+        } else if(event.contains("rations")){
             imageName = "sadDrone.png";
+        } else if (event.contains("drink")) {
+            imageName = "drink.jpg";
         }
         else {
             imageName = currentBee.getRole().toLowerCase() + ".jpg";
         }
 
         updateMainScreenImage(imageName);
+        System.out.println("Selected image name: " + imageName);
     }
 
     @FXML
@@ -134,7 +134,7 @@ public class MainViewController {
                         currentBee.setLastEventResult(result);
                         updateImageBasedOnEvent(currentEvent, result);
 
-                        if (result.contains("Game over")) {
+                        if (currentBee.hasReachedLifespan() ||result.contains("Game over")) {
                             navigateToEndView();
                         } else {
                             eventHandled = true;
@@ -193,12 +193,12 @@ public class MainViewController {
                 currentBee.setLastEventResult(result);
                 updateImageBasedOnEvent(currentEvent, result);
 
-                if (result.contains("Game over")) {
+                if (currentBee.hasReachedLifespan() ||result.contains("Game over")) {
                     navigateToEndView();
                 } else {
                     eventHandled = true;
                     noButton.setDisable(true);
-                    eventTextField.setText("Event handled. Press Yes for the next event.");
+                    eventTextField.setText("Press YES to continue.");
                 }
             } else {
                 resultTextField.setText("No result generated.");
