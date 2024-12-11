@@ -25,6 +25,11 @@
             <artifactId>javafx-fxml</artifactId>
             <version>21</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>21</version>
+        </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -61,7 +66,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                edu.miracosta.cs112.finalproject.finalproject/edu.miracosta.cs112.finalproject.finalproject.HelloApplication
+                                edu.miracosta.cs112.finalproject.finalproject/edu.miracosta.cs112.finalproject.finalproject.Application
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
