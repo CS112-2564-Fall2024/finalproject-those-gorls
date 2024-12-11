@@ -59,12 +59,13 @@ public class EndViewController {
         }
 
         String lastEvent = bee.getLastEventResult();
-        if (lastEvent.contains("Game over")) {
+        if (lastEvent.contains("Game over") || lastEvent.contains("old age")) {
             switch (bee.getType().toLowerCase()) {
                 case "worker":
                     if (lastEvent.contains("fly swatter")) return "The bee's curiosity led to an unfortunate encounter with a fly swatter.";
                     if (lastEvent.contains("stinger")) return "The bee heroically defended the hive, sacrificing its life by stinging a bear.";
                     if (lastEvent.contains("raindrop")) return "The bee was caught in a sudden rainstorm and couldn't survive.";
+
                     break;
                 case "drone":
                     if (lastEvent.contains("treason")) return "The bee was publicly executed for attempting to steal nectar.";

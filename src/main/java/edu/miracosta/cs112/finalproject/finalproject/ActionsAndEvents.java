@@ -79,7 +79,7 @@ public class ActionsAndEvents {
         private String handleWorkerBeeEvent(boolean userChoice, String currentEvent) {
             return switch (currentEvent) {
                 case "There is a pretty flower in the window, would you like to get a closer look?" ->
-                        userChoice ? "Game over. The flower was plastic and you were attacked by a fly swatter." :
+                        userChoice ? "Game over. The flower was plastic and you were attacked by a fly swatter.":
                                 "Another bee approached and was swiftly smooshed with a fly swatter.";
                 case "The nectar looks very tempting, would you like to sneak a little taste?" ->
                         userChoice ? "Totally worth the risk.": "Maybe one day";
