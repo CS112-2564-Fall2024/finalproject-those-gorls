@@ -22,7 +22,7 @@
            style="-fx-font-weight: bold; -fx-font-family: Constantia; -fx-font-size: 20; -fx-text-alignment: CENTER;"/>
     <Button fx:id="restartButton" layoutX="214.0" layoutY="552.0" mnemonicParsing="false" onAction="#restartGame"
             prefHeight="92.0" prefWidth="122.0" text="Restart Game"
-            style="-fx-background-color: #f7e9d2; -fx-font-weight: bold; -fx-font-family: Constantia; -fx-font-size: 20; -fx-text-alignment: CENTER;"
+            style="-fx-background-color: #f7e9d2; -fx-font-weight: bold; -fx-font-family: Constantia; -fx-font-size: 20; -fx-text-alignment: CENTER; -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );"
             wrapText="true"/>
 </Pane>
 

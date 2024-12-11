@@ -31,10 +31,10 @@
            style="-fx-font-weight: bold; -fx-font-family: Constantia; -fx-font-size: 15; -fx-text-alignment: CENTER;"/>
     <Button fx:id="yesButton" layoutX="14.0" layoutY="510.0"
             mnemonicParsing="false" onAction="#yesButtonAction"
-            prefHeight="68.0" prefWidth="230.0" style="-fx-background-color: #f7e9d2; -fx-font-weight: bold; -fx-font-family: Constantia; -fx-font-size: 20; -fx-text-alignment: CENTER;"/>
+            prefHeight="68.0" prefWidth="230.0" style="-fx-background-color: #f7e9d2; -fx-font-weight: bold; -fx-font-family: Constantia; -fx-font-size: 20; -fx-text-alignment: CENTER; -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );"/>
     <Button fx:id="noButton" layoutX="303.0" layoutY="510.0"
             mnemonicParsing="false" onAction="#noButtonAction"
-            prefHeight="68.0" prefWidth="230.0" style="-fx-background-color: #f7e9d2; -fx-font-weight: bold; -fx-font-family: Constantia; -fx-font-size: 20; -fx-text-alignment: CENTER;"/>
+            prefHeight="68.0" prefWidth="230.0" style="-fx-background-color: #f7e9d2; -fx-font-weight: bold; -fx-font-family: Constantia; -fx-font-size: 20; -fx-text-alignment: CENTER; -fx-effect: dropshadow( one-pass-box , black , 8 , 0.0 , 2 , 0 );  "/>
     <Label fx:id="beeInfoLeft" alignment="TOP_LEFT"
            layoutX="380.0" layoutY="14.0"
            prefHeight="68.0" prefWidth="230.0"
